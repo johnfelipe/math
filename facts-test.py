@@ -33,10 +33,8 @@ class FactsTest(unittest.TestCase):
         results = facts.generateFacts(low, high, amount)
 
         for fact in results:
-            self.assertTrue(low <= fact.left)
-            self.assertTrue(low <= fact.right)
-            self.assertTrue(high >= fact.left)
-            self.assertTrue(high >= fact.right)
+            self.assertTrue(low <= fact.left <= high)
+            self.assertTrue(low <= fact.right <= high)
 
     def testGenerateFactsDefaultsToZeroToTwelve(self):
         high = 12
@@ -46,10 +44,14 @@ class FactsTest(unittest.TestCase):
         results = facts.generateFacts(low, high, amount)
 
         for fact in results:
-            self.assertTrue(low <= fact.left)
-            self.assertTrue(low <= fact.right)
-            self.assertTrue(high >= fact.left)
-            self.assertTrue(high >= fact.right)
+            self.assertTrue(low <= fact.left <= high)
+            self.assertTrue(low <= fact.right <= high)
+
+    def testGenerateFactsYieldsNoNegatives(self):
+        results = facts.generateFacts(amount=500, op=minus)
+
+        for fact in results:
+            self.assertTrue(fact.result >= 0)
 
     def testGenerateFactsDefaultsThirtyFacts(self):
         high = 12
@@ -71,6 +73,22 @@ class FactsTest(unittest.TestCase):
         for fact in results:
             self.assertEquals('+',fact.sign)
 
+    def testGenerateFactsCanGiveMixOfPlusMinus(self):
+        results = facts.generateFacts(amount=500)
+
+        pluscount = 0
+        minuscount = 0
+        for fact in results:
+            if fact.sign == '+':
+                pluscount += 1
+            elif fact.sign == '-':
+                minuscount += 1
+            else:
+                self.assertFalse(True)
+        self.assertEquals(500,pluscount+minuscount)
+        self.assertTrue(200 < pluscount < 300)
+
+    
 if __name__ == '__main__':
     unittest.main()
 
