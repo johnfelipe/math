@@ -30,7 +30,7 @@ class FactsTest(unittest.TestCase):
         low = 2
         amount = 500
         
-        results = facts.generateFacts(low, high, amount)
+        results = facts.generatefacts(low, high, amount)
 
         for fact in results:
             self.assertTrue(low <= fact.left <= high)
@@ -41,14 +41,14 @@ class FactsTest(unittest.TestCase):
         low = 0
         amount = 500
         
-        results = facts.generateFacts(low, high, amount)
+        results = facts.generatefacts(low, high, amount)
 
         for fact in results:
             self.assertTrue(low <= fact.left <= high)
             self.assertTrue(low <= fact.right <= high)
 
     def testGenerateFactsYieldsNoNegatives(self):
-        results = facts.generateFacts(amount=500, op=minus)
+        results = facts.generatefacts(amount=500, op='-')
 
         for fact in results:
             self.assertTrue(fact.result >= 0)
@@ -57,24 +57,24 @@ class FactsTest(unittest.TestCase):
         high = 12
         low = 0
         
-        results = facts.generateFacts(low, high)
+        results = facts.generatefacts(low, high)
 
         self.assertEquals(30,len(results))
 
     def testGenerateFactsCanGiveMinus(self):
-        results = facts.generateFacts(op=minus)
+        results = facts.generatefacts(op='-')
 
         for fact in results:
             self.assertEquals('-',fact.sign)
 
     def testGenerateFactsCanGivePlus(self):
-        results = facts.generateFacts(op=plus)
+        results = facts.generatefacts(op='+')
 
         for fact in results:
             self.assertEquals('+',fact.sign)
 
     def testGenerateFactsCanGiveMixOfPlusMinus(self):
-        results = facts.generateFacts(amount=500)
+        results = facts.generatefacts(amount=500)
 
         pluscount = 0
         minuscount = 0

@@ -6,6 +6,7 @@ from operations import plus
 from operations import minus
 
 Fact = namedtuple('Fact','left,right,result,sign')
+ops = {'+':plus, '-':minus, '':None}
 
 def makeFact(left,right,op):
     result = op.do(left,right)
@@ -14,7 +15,8 @@ def makeFact(left,right,op):
 def choosePlusMinus():
     return choice(plsmns)   
 
-def generateFacts(low=0, high=12, amount=30, op=None):
+def generatefacts(low=0, high=12, amount=30, op=''):
+    op = ops[op]
     return [generateFact(low,high,op) for _ in range(amount) ]
 
 def generateFact(low,high,op):
