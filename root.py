@@ -1,4 +1,6 @@
 import cherrypy
+from cherrypy.lib.static import serve_fileobj
+
 import facts
 
 class Root(object):
@@ -28,7 +30,14 @@ class Root(object):
 
     def genfacts(self, low=0, high=12, amount=30, op=''):
         fs = facts.generatefacts(int(low),int(high),int(amount),op)
-        return str(fs)
+        filename = 'test.txt'
+        FILE = open(filename,'w')
+        FILE.writelines([str(f)+'\n' for f in fs])
+        FILE.close()
+        RFILE = open(filename,'r')
+        fileobj = serve_fileobj(RFILE,disposition='attachment',
+                             content_type='.txt',name=filename)
+        return fileobj
     genfacts.exposed = True
 
 cherrypy.quickstart(Root())
