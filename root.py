@@ -35,9 +35,9 @@ class Root(object):
         FILE.writelines([str(f)+'\n' for f in fs])
         FILE.close()
         RFILE = open(filename,'r')
-        fileobj = serve_fileobj(RFILE,disposition='attachment',
+        return serve_fileobj(RFILE,disposition='attachment',
                              content_type='.txt',name=filename)
-        return fileobj
+
     genfacts.exposed = True
 
 cherrypy.quickstart(Root())
