@@ -1,29 +1,27 @@
 \documentclass{article}
-\usepackage{graphicx}
+\usepackage{graphicx,xlop}
 
 \begin{document}
 
-\title{Introduction to \LaTeX{}}
-\author{Author's Name}
+\title{Arithmetic Practice}
+\author{WCI}
 
-\maketitle
+%\maketitle
+\newcommand\hole[1]{\texttt{\ }}
+\[ 
+\opadd[resultstyle=\hole,carrystyle=\hole]{192}{338} \hspace{1in}
+\opsub[resultstyle=\hole,carrystyle=\hole]{123}{99} \hspace{1in}
+\opadd[resultstyle=\hole,carrystyle=\hole]{192}{338} \hspace{1in}
+\opsub[resultstyle=\hole,carrystyle=\hole]{123}{99} \hspace{1in}
+\opsub[resultstyle=\hole,carrystyle=\hole]{123}{99}
+\]
 
-\begin{abstract}
-The abstract text goes here.
-\end{abstract}
-
-\section{Introduction}
-Here is the text of your introduction.
-
-\begin{equation}
-    \label{simple_equation}
-    \alpha = \sqrt{ \beta }
-\end{equation}
-
-\subsection{Subsection Heading Here}
-Write your subsection text here.
-
-\section{Conclusion}
-Write your conclusion here.
-
+\section{test}
+\[ 
+\opadd[resultstyle=\hole,carrystyle=\hole]{192}{338} \hspace{0.6in}
+\opsub[resultstyle=\hole,carrystyle=\hole]{123}{99} \hspace{0.6in}
+\opadd[resultstyle=\hole,carrystyle=\hole]{192}{338} \hspace{0.6in}
+\opsub[resultstyle=\hole,carrystyle=\hole]{123}{99} \hspace{0.6in}
+\opsub[resultstyle=\hole,carrystyle=\hole]{123}{99}
+\]
 \end{document}
