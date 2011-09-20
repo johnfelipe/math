@@ -13,6 +13,14 @@ class LatexTest(unittest.TestCase):
 
         self.assertEquals(expected,texfact)
 
+    def testMakeDiff(self):
+        subfact = Fact(123,45,78,'-')
+        expected = '\opsub[resultstyle=\hole,carrystyle=\hole]{123}{45}'
+
+        texfact = latex.typesetfact(subfact)
+
+        self.assertEquals(expected,texfact)
+    
 if __name__ == '__main__':
     unittest.main()
 
