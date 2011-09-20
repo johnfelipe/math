@@ -1,3 +1,6 @@
+def arrangerectangle(facts):
+    return [ facts[r*5:r*5+5] for r in range(6) ]
+
 def typesetfact(fact):
     if fact.sign == '+':
         op = '\opadd'    

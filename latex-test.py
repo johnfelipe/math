@@ -8,9 +8,10 @@ class LatexTest(unittest.TestCase):
     def testArrangeRectangle(self):
         thirty = range(30)
         
-        latex rect = arrangerectangle(thirty)
+        rect = latex.arrangerectangle(thirty)
 
         self.assertEquals([0,1,2,3,4],rect[0])
+        self.assertEquals([5,6,7,8,9],rect[1])
         for row in range(6):
             start = row*5
             self.assertEquals(range(start,start+5),rect[row])
