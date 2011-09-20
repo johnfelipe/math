@@ -5,6 +5,16 @@ from facts import Fact
 
 class LatexTest(unittest.TestCase):
 
+    def testArrangeRectangle(self):
+        thirty = range(30)
+        
+        latex rect = arrangerectangle(thirty)
+
+        self.assertEquals([0,1,2,3,4],rect[0])
+        for row in range(6):
+            start = row*5
+            self.assertEquals(range(start,start+5),rect[row])
+
     def testMakeSum(self):
         addfact = Fact(123,45,168,'+')
         expected = '\opadd[resultstyle=\hole,carrystyle=\hole]{123}{45}'
