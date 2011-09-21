@@ -18,6 +18,9 @@ class LatexTest(unittest.TestCase):
         facts = [[Fact(1,2,3,'+'),Fact(2,3,5,'+')],
                  [Fact(6,2,4,'-'),Fact(3,4,7,'+')]]
         expected = r'''\[ \opadd[resultstyle=\hole,carrystyle=\hole]{1}{2} \hspace{1in} \opadd[resultstyle=\hole,carrystyle=\hole]{2}{3} \]
+
+\vspace{0.75cm}
+
 \[ \opsub[resultstyle=\hole,carrystyle=\hole]{6}{2} \hspace{1in} \opadd[resultstyle=\hole,carrystyle=\hole]{3}{4} \]
 '''
 

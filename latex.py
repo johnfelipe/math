@@ -9,10 +9,10 @@ def buildlatexfile(facts):
     latexfile.close()
 
 def typesetquestions(rows):
-    questions = ''
+    questions = []
     for row in rows:
-        questions += typesetrow([typesetfact(fact) for fact in row])
-    return questions
+        questions.append(typesetrow([typesetfact(fact) for fact in row]))
+    return typesetspacedrows(questions)
 
 def typesetanswers(rows):
     answers = ''
