@@ -1,3 +1,25 @@
+def buildlatexfile(facts):
+    rectfacts = arrangerectangle(facts)
+    latexfile = open('arithmetic.tex','w')
+    latexfile.write(makeheader())
+    latexfile.write(typesetquestions(rectfacts))
+    latexfile.write(makeline())
+    latexfile.write(typesetanswers(rectfacts))
+    latexfile.write(makeend())
+    latexfile.close()
+
+def typesetquestions(rows):
+    questions = ''
+    for row in rows:
+        questions += typesetrow([typesetfact(fact) for fact in row])
+    return questions
+
+def typesetanswers(rows):
+    answers = ''
+    for row in rows:
+        answers += typesetrow([str(fact.result) for fact in row])
+    return answers
+
 def arrangerectangle(facts):
     return [ facts[r*5:r*5+5] for r in range(6) ]
 
