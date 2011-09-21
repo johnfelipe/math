@@ -1,7 +1,10 @@
+from subprocess import call
+
 import cherrypy
 from cherrypy.lib.static import serve_fileobj
 
 import facts
+import latex
 
 class Root(object):
     def index(self):
@@ -30,13 +33,12 @@ class Root(object):
 
     def genfacts(self, low=0, high=12, amount=30, op=''):
         fs = facts.generatefacts(int(low),int(high),int(amount),op)
-        filename = 'test.txt'
-        FILE = open(filename,'w')
-        FILE.writelines([str(f)+'\n' for f in fs])
-        FILE.close()
-        RFILE = open(filename,'r')
-        return serve_fileobj(RFILE,disposition='attachment',
-                             content_type='.txt',name=filename)
+        latex.buildlatexfile(fs)
+        filename = 'arithmetic.pdf'
+        call('pdflatex arithmetic.tex', shell=True)
+        returnfile = open(filename,'r')
+        return serve_fileobj(returnfile,disposition='attachment',
+                             content_type='application/pdf',name=filename)
 
     genfacts.exposed = True
 
