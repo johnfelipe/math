@@ -42,5 +42,6 @@ class Root(object):
 
     genfacts.exposed = True
 
-cherrypy.config.update({'server.socket_host': '0.0.0.0'})
+cherrypy.config.update({'server.socket_host': '0.0.0.0',
+                        'server.socket_port': 8008})
 cherrypy.quickstart(Root())
