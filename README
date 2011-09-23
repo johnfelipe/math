@@ -1,1 +1,9 @@
-Eventually hope to output randomly generated pdfs of math exercises.
+This app generates .pdf documents of addition and/or subtraction 
+exercises with numbers in the range specified by the user.
+
+Currently, there are some rough edges, like no validation, poor 
+typesetting, etc. Also, multiplication/division are not yet supported.
+
+But it works. I'll add features, and clean things up over time, and
+if there is anything you would particularly like, just let me know,
+and I'll work on it sooner.
