@@ -36,7 +36,7 @@ class Root(object):
         latex.buildlatexfile(fs)
         filename = 'arithmetic.pdf'
         call('pdflatex arithmetic.tex', shell=True)
-        returnfile = open(filename,'r')
+        returnfile = open(filename,'rb')
         return serve_fileobj(returnfile,disposition='attachment',
                              content_type='application/pdf',name=filename)
 
